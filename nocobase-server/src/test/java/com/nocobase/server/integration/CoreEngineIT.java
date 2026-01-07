@@ -5,6 +5,7 @@ import com.nocobase.data.mapper.CollectionMapper;
 import com.nocobase.data.manager.DynamicTableManager;
 import com.nocobase.data.service.DataRecordService;
 import com.nocobase.server.NocoBaseApplication;
+import com.nocobase.server.config.TestConfig;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tests the complete workflow of dynamic table creation, field addition, and CRUD operations
  */
 @SpringBootTest(
-    classes = NocoBaseApplication.class
+    classes = {NocoBaseApplication.class, TestConfig.class}
 )
 @Testcontainers
 @DisplayName("Core Engine Integration Test")
