@@ -20,11 +20,7 @@ spring:
 mybatis-flex:
   mapper-locations: classpath*:/mapper/**/*.xml
   type-aliases-package: com.nocobase.*.entity
-  configuration:
-    map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
-  global-config:
-    banner: false
+  config-location: classpath:mybatis-config.xml
 
 # Logging
 logging:
@@ -33,3 +29,4 @@ logging:
     com.mybatisflex: DEBUG
     org.springframework.test: INFO
     org.testcontainers: INFO
+    org.mybatis.flex: DEBUG

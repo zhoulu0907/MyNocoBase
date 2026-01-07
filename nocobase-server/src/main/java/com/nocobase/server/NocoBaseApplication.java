@@ -1,6 +1,5 @@
 package com.nocobase.server;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -20,15 +19,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         "com.nocobase.file"
     }
 )
-@MapperScan(basePackages = {
-    "com.nocobase.user.mapper",
-    "com.nocobase.data.mapper",
-    "com.nocobase.auth.mapper",
-    "com.nocobase.permission.mapper",
-    "com.nocobase.workflow.mapper",
-    "com.nocobase.ai.mapper",
-    "com.nocobase.file.mapper"
-})
 public class NocoBaseApplication {
 
     public static void main(String[] args) {

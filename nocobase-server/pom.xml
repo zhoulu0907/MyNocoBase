@@ -103,6 +103,14 @@
             <version>1.19.3</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- MyBatis-Flex for Tests -->
+        <dependency>
+            <groupId>com.mybatis-flex</groupId>
+            <artifactId>mybatis-flex-spring-boot3-starter</artifactId>
+            <version>${mybatis-flex.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
