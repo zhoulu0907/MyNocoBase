@@ -1,0 +1,35 @@
+# Test Configuration for Integration Tests
+
+server:
+  port: 0  # Random port for tests
+
+spring:
+  datasource:
+    # Testcontainers will override this
+    url: jdbc:postgresql://localhost:5432/nocobase_test
+    username: nocobase
+    password: nocobase
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+# MyBatis-Flex Configuration
+mybatis-flex:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.nocobase.*.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    banner: false
+
+# Logging
+logging:
+  level:
+    com.nocobase: DEBUG
+    com.mybatisflex: DEBUG
+    org.springframework.test: INFO
+    org.testcontainers: INFO

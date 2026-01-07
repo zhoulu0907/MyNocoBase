@@ -7,6 +7,8 @@ import com.nocobase.user.mapper.UserMapper;
 import com.nocobase.user.service.UserService;
 import org.springframework.stereotype.Service;
 
+import static com.nocobase.user.entity.table.UserTableDef.USER;
+
 /**
  * User Service Implementation
  * MyBatis-Flex ServiceImpl provides base CRUD operations
@@ -16,9 +18,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public User getUserWithRoles(String username) {
-        // Step 1: Get user by username
+        // Step 1: Get user by username using static TableDef
         QueryWrapper userQuery = QueryWrapper.create()
-                .eq("username", username);
+                .where(USER.USERNAME.eq(username));
         User user = getOne(userQuery);
 
         if (user == null) {
