@@ -17,6 +17,14 @@ import static com.nocobase.user.entity.table.UserTableDef.USER;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Override
+    public User findByUsername(String username) {
+        // Use QueryWrapper with static TableDef to query user by username
+        QueryWrapper query = QueryWrapper.create()
+                .where(USER.USERNAME.eq(username));
+        return getOne(query);
+    }
+
+    @Override
     public User getUserWithRoles(String username) {
         // Step 1: Get user by username using static TableDef
         QueryWrapper userQuery = QueryWrapper.create()

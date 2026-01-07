@@ -10,6 +10,14 @@ import com.nocobase.user.entity.User;
 public interface UserService extends IService<User> {
 
     /**
+     * Find user by username
+     *
+     * @param username the username
+     * @return User entity or null if not found
+     */
+    User findByUsername(String username);
+
+    /**
      * Get user with associated roles
      * Manual join query recommended by MyBatis-Flex
      *

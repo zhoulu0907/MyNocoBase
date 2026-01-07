@@ -11,7 +11,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -23,17 +22,13 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
 
 /**
  * Core Engine Integration Test
  * Tests the complete workflow of dynamic table creation, field addition, and CRUD operations
  */
 @SpringBootTest(
-    classes = NocoBaseApplication.class,
-    properties = {
-        "spring.autoconfigure.exclude=com.nocobase.auth.config.SecurityConfig"
-    }
+    classes = NocoBaseApplication.class
 )
 @Testcontainers
 @DisplayName("Core Engine Integration Test")

@@ -1,8 +1,7 @@
 package com.nocobase.auth.service;
 
-import com.mybatisflex.core.query.QueryWrapper;
 import com.nocobase.user.entity.User;
-import com.nocobase.user.mapper.UserMapper;
+import com.nocobase.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,25 +11,21 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 
-import static com.nocobase.user.entity.table.UserTableDef.USER;
-
 /**
  * Custom UserDetailsService Implementation
- * Uses MyBatis-Flex to load user data for Spring Security
+ * Uses UserService to load user data for Spring Security
+ * This follows proper layered architecture (Service depends on Service, not Mapper)
  */
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserMapper userMapper;
+    private final UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // Use MyBatis-Flex QueryWrapper with static TableDef
-        QueryWrapper query = QueryWrapper.create()
-                .where(USER.USERNAME.eq(username));
-
-        User user = userMapper.selectOneByQuery(query);
+        // Use UserService to find user by username
+        User user = userService.findByUsername(username);
 
         if (user == null) {
             throw new UsernameNotFoundException("User not found: " + username);
